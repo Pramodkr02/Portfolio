@@ -4,6 +4,7 @@ import { Footer } from '@/components/layout/Footer';
 import { Hero } from '@/components/home/Hero';
 import { SkillsSection } from '@/components/skills/SkillsSection';
 import { EducationSection } from '@/components/education/EducationSection';
+import { ExperienceSection } from '@/components/experience/ExperienceSection';
 import { ProjectsSection } from '@/components/projects/ProjectsSection';
 import { ContactSection } from '@/components/contact/ContactSection';
 import { SVGBackgroundMorph } from '@/components/effects/SVGBackgroundMorph';
@@ -26,6 +27,7 @@ function App() {
         <Hero />
         <SkillsSection />
         <EducationSection />
+        <ExperienceSection />
         <ProjectsSection />
         <ContactSection />
       </main>

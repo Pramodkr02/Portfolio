@@ -12,12 +12,13 @@ export function useScrollHeader(threshold = 32) {
       // Check threshold for glass effect
       setIsScrolled(currentScrollY > threshold);
 
-      // Check direction for hide/show (optional, can be disabled)
-      if (currentScrollY > lastScrollY && currentScrollY > 100) {
-        setIsVisible(false);
-      } else {
-        setIsVisible(true);
-      }
+      // Check direction for hide/show (disabled for sticky behavior)
+      // if (currentScrollY > lastScrollY && currentScrollY > 100) {
+      //   setIsVisible(false);
+      // } else {
+      //   setIsVisible(true);
+      // }
+      setIsVisible(true);
 
       setLastScrollY(currentScrollY);
     };

@@ -11,6 +11,7 @@ import { cn } from '@/utils/cn';
 const NAV_LINKS = [
   { label: 'Skills', href: '#skills' },
   { label: 'Education', href: '#education' },
+  { label: 'Experience', href: '#experience' },
   { label: 'Projects', href: '#projects' },
   { label: 'Contact', href: '#contact' },
 ];

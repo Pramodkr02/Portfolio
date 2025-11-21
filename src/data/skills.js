@@ -1,14 +1,40 @@
+import { 
+  Code2, Paintbrush, Zap, Cloud, TestTube, Container,
+  Brain, Network, BarChart, Table, Hash, Scan, Blocks
+} from 'lucide-react';
+
+// Using lucide-react as an alternative since react-icons is having installation issues
+// Mapping lucide icons to the skills that need component-based icons
+
+const iconMap = {
+  'Tailwind CSS': Paintbrush,
+  'Next.js': Code2,
+  'Framer Motion': Zap,
+  'AWS': Cloud,
+  'TensorFlow': Brain,
+  'PyTorch': Network,
+  'Scikit-Learn': BarChart,
+  'Pandas': Table,
+  'NumPy': Hash,
+  'OpenCV': Scan,
+  'Keras': Blocks,
+  'Jest': TestTube,
+};
+
 export const SKILLS_DATA = [
   {
     id: 'frontend',
     title: 'Frontend Development',
     description: 'Building responsive and interactive user interfaces.',
     skills: [
-      { name: 'React', icon: 'react', level: 95, color: '#61DAFB' },
-      { name: 'TypeScript', icon: 'typescript', level: 90, color: '#3178C6' },
-      { name: 'Tailwind CSS', icon: 'tailwind', level: 98, color: '#38B2AC' },
-      { name: 'Next.js', icon: 'nextjs', level: 85, color: '#000000' },
-      { name: 'Framer Motion', icon: 'framer', level: 80, color: '#0055FF' },
+      { name: 'React', iconType: 'image', src: '/React.png', color: '#61DAFB' },
+      { name: 'TypeScript', iconType: 'image', src: '/Typescript.png', color: '#3178C6' },
+      { name: 'JavaScript', iconType: 'image', src: '/Javascript.png', color: '#F7DF1E' },
+      { name: 'HTML', iconType: 'image', src: '/HTML.png', color: '#E34F26' },
+      { name: 'CSS', iconType: 'image', src: '/CSS.png', color: '#1572B6' },
+      { name: 'Tailwind CSS', iconType: 'component', component: iconMap['Tailwind CSS'], color: '#38B2AC' },
+      { name: 'Next.js', iconType: 'component', component: iconMap['Next.js'], color: '#000000' },
+      { name: 'Framer Motion', iconType: 'component', component: iconMap['Framer Motion'], color: '#0055FF' },
     ]
   },
   {
@@ -16,10 +42,26 @@ export const SKILLS_DATA = [
     title: 'Backend & Infrastructure',
     description: 'Creating robust server-side applications and APIs.',
     skills: [
-      { name: 'Node.js', icon: 'nodejs', level: 85, color: '#339933' },
-      { name: 'PostgreSQL', icon: 'postgresql', level: 80, color: '#336791' },
-      { name: 'Docker', icon: 'docker', level: 75, color: '#2496ED' },
-      { name: 'AWS', icon: 'aws', level: 70, color: '#FF9900' },
+      { name: 'Node.js', iconType: 'image', src: '/Nodejs.png', color: '#339933' },
+      { name: 'Python', iconType: 'image', src: '/Python.png', color: '#3776AB' },
+      { name: 'PostgreSQL', iconType: 'image', src: '/PostgreSQL.png', color: '#336791' },
+      { name: 'MongoDB', iconType: 'image', src: '/MongoDB.png', color: '#47A248' },
+      { name: 'Docker', iconType: 'image', src: '/Docker.png', color: '#2496ED' },
+      { name: 'AWS', iconType: 'component', component: iconMap['AWS'], color: '#FF9900' },
+    ]
+  },
+  {
+    id: 'ai-ml',
+    title: 'AI & Machine Learning',
+    description: 'Developing intelligent models and data-driven solutions.',
+    skills: [
+      { name: 'TensorFlow', iconType: 'component', component: iconMap['TensorFlow'], color: '#FF6F00' },
+      { name: 'PyTorch', iconType: 'component', component: iconMap['PyTorch'], color: '#EE4C2C' },
+      { name: 'Scikit-Learn', iconType: 'component', component: iconMap['Scikit-Learn'], color: '#F7931E' },
+      { name: 'Pandas', iconType: 'component', component: iconMap['Pandas'], color: '#150458' },
+      { name: 'NumPy', iconType: 'component', component: iconMap['NumPy'], color: '#013243' },
+      { name: 'OpenCV', iconType: 'component', component: iconMap['OpenCV'], color: '#5C3EE8' },
+      { name: 'Keras', iconType: 'component', component: iconMap['Keras'], color: '#D00000' },
     ]
   },
   {
@@ -27,9 +69,10 @@ export const SKILLS_DATA = [
     title: 'Tools & Methods',
     description: 'Optimizing workflow and ensuring code quality.',
     skills: [
-      { name: 'Git', icon: 'git', level: 90, color: '#F05032' },
-      { name: 'Figma', icon: 'figma', level: 85, color: '#F24E1E' },
-      { name: 'Jest', icon: 'jest', level: 75, color: '#C21325' },
+      { name: 'Git', iconType: 'image', src: '/Git.png', color: '#F05032' },
+      { name: 'GitHub', iconType: 'image', src: '/Github.png', color: '#181717' },
+      { name: 'Figma', iconType: 'image', src: '/Figma.png', color: '#F24E1E' },
+      { name: 'Jest', iconType: 'component', component: iconMap['Jest'], color: '#C21325' },
     ]
   }
 ];

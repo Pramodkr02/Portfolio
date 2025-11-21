@@ -1,12 +1,15 @@
-import React from 'react';
-import { motion } from 'framer-motion';
-import { Mail, MapPin, Phone } from 'lucide-react';
-import { ContactForm } from './ContactForm';
-import { ContactWidget } from './ContactWidget';
+import React from "react";
+import { motion } from "framer-motion";
+import { Mail, MapPin, Phone } from "lucide-react";
+import { ContactForm } from "./ContactForm";
+import { ContactWidget } from "./ContactWidget";
 
 export const ContactSection = () => {
   return (
-    <section id="contact" className="py-24 relative overflow-hidden bg-bg-900/50">
+    <section
+      id="contact"
+      className="py-24 relative overflow-hidden bg-bg-900/50"
+    >
       <div className="container mx-auto px-4 relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-24">
           {/* Left Column: Info */}
@@ -21,8 +24,9 @@ export const ContactSection = () => {
                 Let's Work Together
               </h2>
               <p className="text-text-secondary text-lg leading-relaxed">
-                Have a project in mind or want to discuss a potential collaboration? 
-                I'm currently open to new opportunities and would love to hear from you.
+                Have a project in mind or want to discuss a potential
+                collaboration? I'm currently open to new opportunities and would
+                love to hear from you.
               </p>
             </div>
 
@@ -33,8 +37,11 @@ export const ContactSection = () => {
                 </div>
                 <div>
                   <h4 className="font-bold text-text-primary">Email</h4>
-                  <a href="mailto:contact@example.com" className="text-text-secondary hover:text-accent-primary transition-colors">
-                    contact@example.com
+                  <a
+                    href="mailto:pramodkr02.info@gmail.com"
+                    className="text-text-secondary hover:text-accent-primary transition-colors"
+                  >
+                    pramodkr02.info@gmail.com
                   </a>
                 </div>
               </div>
@@ -45,7 +52,7 @@ export const ContactSection = () => {
                 </div>
                 <div>
                   <h4 className="font-bold text-text-primary">Phone</h4>
-                  <p className="text-text-secondary">+1 (555) 123-4567</p>
+                  <p className="text-text-secondary">+91 8178206570</p>
                 </div>
               </div>
 
@@ -55,7 +62,9 @@ export const ContactSection = () => {
                 </div>
                 <div>
                   <h4 className="font-bold text-text-primary">Location</h4>
-                  <p className="text-text-secondary">San Francisco, CA (Remote Available)</p>
+                  <p className="text-text-secondary">
+                    Lucknow, India (Remote Available)
+                  </p>
                 </div>
               </div>
             </div>
@@ -72,7 +81,7 @@ export const ContactSection = () => {
           </motion.div>
         </div>
       </div>
-      
+
       <ContactWidget />
     </section>
   );

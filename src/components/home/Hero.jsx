@@ -1,11 +1,22 @@
-import React, { Suspense, lazy } from 'react';
-import { motion } from 'framer-motion';
-import { ArrowRight, Download, Github, Linkedin, Twitter } from 'lucide-react';
-import { Button } from '@/components/ui/Button';
-import { HeroVisualCard } from './HeroVisualCard';
-import { CanvasParticles } from '@/components/effects/CanvasParticles';
+import React, { Suspense, lazy } from "react";
+import { motion } from "framer-motion";
+import {
+  ArrowRight,
+  Download,
+  Github,
+  Linkedin,
+  Twitter,
+  CodeXml,
+} from "lucide-react";
+import { Button } from "@/components/ui/Button";
+import { HeroVisualCard } from "./HeroVisualCard";
+import { CanvasParticles } from "@/components/effects/CanvasParticles";
 
-const ThreeHeroScene = lazy(() => import('@/components/effects/ThreeHeroScene').then(module => ({ default: module.ThreeHeroScene })));
+const ThreeHeroScene = lazy(() =>
+  import("@/components/effects/ThreeHeroScene").then((module) => ({
+    default: module.ThreeHeroScene,
+  }))
+);
 
 export const Hero = () => {
   const letterVariants = {
@@ -25,7 +36,10 @@ export const Hero = () => {
   const name = "Pramod Kumar";
 
   return (
-    <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20">
+    <section
+      id="home"
+      className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20"
+    >
       {/* Background Effects */}
       <CanvasParticles />
       <Suspense fallback={null}>
@@ -41,13 +55,19 @@ export const Hero = () => {
             variants={containerVariants}
             className="space-y-4"
           >
-            <motion.h2 variants={letterVariants} className="text-xl md:text-2xl font-medium text-accent-secondary">
+            <motion.h2
+              variants={letterVariants}
+              className="text-xl md:text-2xl font-medium text-accent-secondary"
+            >
               Hello, I'm
             </motion.h2>
-            
+
             <h1 className="text-5xl md:text-7xl lg:text-8xl font-display font-bold tracking-tight">
               <span className="sr-only">{name}</span>
-              <motion.div aria-hidden="true" className="flex flex-wrap justify-center lg:justify-start gap-x-4">
+              <motion.div
+                aria-hidden="true"
+                className="flex flex-wrap justify-center lg:justify-start gap-x-4"
+              >
                 {name.split(" ").map((word, i) => (
                   <span key={i} className="inline-block whitespace-nowrap">
                     {word.split("").map((char, j) => (
@@ -64,12 +84,13 @@ export const Hero = () => {
               </motion.div>
             </h1>
 
-            <motion.p 
+            <motion.p
               variants={letterVariants}
               className="text-lg md:text-xl text-text-secondary max-w-2xl mx-auto lg:mx-0 leading-relaxed"
             >
-              Crafting immersive digital experiences with modern web technologies. 
-              Specializing in React, Next.js, and creative frontend development.
+              Crafting immersive digital experiences with modern web
+              technologies. Specializing in React, Next.js, and creative
+              frontend development.
             </motion.p>
           </motion.div>
 
@@ -95,7 +116,7 @@ export const Hero = () => {
             transition={{ delay: 1, duration: 0.5 }}
             className="flex gap-6 pt-4"
           >
-            {[Github, Linkedin, Twitter].map((Icon, i) => (
+            {[Github, Linkedin, CodeXml].map((Icon, i) => (
               <a
                 key={i}
                 href="#"

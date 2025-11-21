@@ -1,42 +1,34 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Tooltip } from '@/components/ui/Tooltip';
-import { useReducedMotion } from '@/hooks/useReducedMotion';
 
-export const SkillBadge = ({ name, level, color }) => {
-  const prefersReducedMotion = useReducedMotion();
-
+export const SkillBadge = ({ name, iconType, src, component: Icon, color }) => {
   return (
-    <Tooltip content={`${name} - ${level}% Proficiency`}>
+    <Tooltip content={name}>
       <motion.div
-        whileHover={{ scale: 1.05, y: -2 }}
-        className="relative group flex items-center gap-3 p-3 rounded-xl bg-surface-200 border border-border-soft hover:border-accent-primary/50 transition-colors cursor-default"
+        whileHover={{ scale: 1.2, rotate: 5 }}
+        className="relative group flex items-center justify-center p-4 rounded-2xl bg-surface-200 border border-border-soft hover:border-accent-primary/50 transition-all duration-300 cursor-pointer shadow-sm hover:shadow-xl hover:shadow-accent-primary/20"
       >
-        {/* Icon Placeholder */}
-        <div 
-          className="w-8 h-8 rounded-lg flex items-center justify-center text-xs font-bold text-white"
-          style={{ backgroundColor: color }}
-        >
-          {name.substring(0, 2)}
-        </div>
-
-        <div className="flex-1 min-w-[100px]">
-          <div className="flex justify-between items-center mb-1">
-            <span className="text-sm font-medium text-text-primary">{name}</span>
-            <span className="text-xs text-text-tertiary">{level}%</span>
-          </div>
-          
-          {/* Progress Bar */}
-          <div className="h-1.5 w-full bg-bg-900 rounded-full overflow-hidden">
-            <motion.div
-              initial={{ width: 0 }}
-              whileInView={{ width: `${level}%` }}
-              viewport={{ once: true }}
-              transition={{ duration: prefersReducedMotion ? 0 : 1, ease: "easeOut" }}
-              className="h-full rounded-full"
-              style={{ backgroundColor: color }}
+        <div className="w-12 h-12 flex items-center justify-center">
+          {iconType === 'image' ? (
+            <img 
+              src={src} 
+              alt={name} 
+              className="w-full h-full object-contain drop-shadow-md transition-transform duration-300 group-hover:scale-110" 
             />
-          </div>
+          ) : (
+            <Icon 
+              className="w-full h-full transition-transform duration-300 group-hover:scale-110" 
+              style={{ color: color }} 
+            />
+          )}
+        </div>
+        
+        {/* Name Reveal on Hover (Optional, since we have tooltip) */}
+        <div className="absolute -bottom-8 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
+          <span className="text-xs font-bold text-text-primary bg-surface-300 px-2 py-1 rounded-md shadow-lg whitespace-nowrap">
+            {name}
+          </span>
         </div>
       </motion.div>
     </Tooltip>

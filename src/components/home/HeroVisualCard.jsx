@@ -54,8 +54,8 @@ export const HeroVisualCard = () => {
       >
         <div className="w-full h-full rounded-full overflow-hidden bg-bg-900 relative">
           <img 
-            src="/assets/avatar-placeholder.jpg" 
-            alt="Avatar" 
+            src="/Profile.jpg" 
+            alt="Profile" 
             className="w-full h-full object-cover"
             loading="lazy"
           />
