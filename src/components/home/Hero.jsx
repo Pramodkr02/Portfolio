@@ -32,6 +32,13 @@ export const Hero = () => {
     },
   };
 
+  const handleResumeClick = () => {
+    window.open(
+      "https://drive.google.com/file/d/1CVM_K3iApcu92mf91dLVk8V31HGj2196/view?usp=sharing",
+      "_blank"
+    );
+  };
+
   const title = "Frontend Developer";
   const name = "Pramod Kumar";
 
@@ -88,9 +95,10 @@ export const Hero = () => {
               variants={letterVariants}
               className="text-lg md:text-xl text-text-secondary max-w-2xl mx-auto lg:mx-0 leading-relaxed"
             >
-              Crafting immersive digital experiences with modern web
-              technologies. Specializing in React, Next.js, and creative
-              frontend development.
+              Full-Stack Developer skilled in building modern, scalable web
+              applications with React, Next.js, and end-to-end engineering.
+              Combining Generative AI expertise with strong data analytics to
+              create intelligent, data-driven digital experiences.
             </motion.p>
           </motion.div>
 
@@ -100,7 +108,12 @@ export const Hero = () => {
             transition={{ delay: 0.8, duration: 0.5 }}
             className="flex flex-wrap gap-4 justify-center lg:justify-start"
           >
-            <Button size="lg" className="group">
+            <Button
+              size="lg"
+              className="group cursor-pointer"
+              onClick={handleResumeClick}
+              download
+            >
               Download Resume
               <Download className="ml-2 w-4 h-4 group-hover:translate-y-1 transition-transform" />
             </Button>

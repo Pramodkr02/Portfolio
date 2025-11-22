@@ -1,19 +1,19 @@
-import React, { useState } from 'react';
-import { motion, useScroll, useTransform } from 'framer-motion';
-import { Menu, Sun, Moon, FileText } from 'lucide-react';
-import { useScrollHeader } from '@/hooks/useScrollHeader';
-import { useTheme } from '@/hooks/useTheme';
-import { Button } from '@/components/ui/Button';
-import { MobileMenu } from './MobileMenu';
-import { ScrollProgress } from './ScrollProgress';
-import { cn } from '@/utils/cn';
+import React, { useState } from "react";
+import { motion, useScroll, useTransform } from "framer-motion";
+import { Menu, Sun, Moon, FileText } from "lucide-react";
+import { useScrollHeader } from "@/hooks/useScrollHeader";
+import { useTheme } from "@/hooks/useTheme";
+import { Button } from "@/components/ui/Button";
+import { MobileMenu } from "./MobileMenu";
+import { ScrollProgress } from "./ScrollProgress";
+import { cn } from "@/utils/cn";
 
 const NAV_LINKS = [
-  { label: 'Skills', href: '#skills' },
-  { label: 'Education', href: '#education' },
-  { label: 'Experience', href: '#experience' },
-  { label: 'Projects', href: '#projects' },
-  { label: 'Contact', href: '#contact' },
+  { label: "Skills", href: "#skills" },
+  { label: "Education", href: "#education" },
+  { label: "Experience", href: "#experience" },
+  { label: "Projects", href: "#projects" },
+  { label: "Contact", href: "#contact" },
 ];
 
 export const Header = () => {
@@ -22,12 +22,14 @@ export const Header = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   const handleResumeClick = () => {
-    // Placeholder for resume download logic
-    console.log('Download Resume');
+    window.open(
+      "https://drive.google.com/file/d/1CVM_K3iApcu92mf91dLVk8V31HGj2196/view?usp=sharing",
+      "_blank"
+    );
   };
 
   const scrollToTop = () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
   return (
@@ -36,7 +38,9 @@ export const Header = () => {
       <motion.header
         className={cn(
           "fixed top-0 left-0 right-0 z-40 transition-all duration-300 border-b border-transparent",
-          isScrolled ? "bg-bg-900/80 backdrop-blur-md border-border-soft h-16" : "bg-transparent h-20",
+          isScrolled
+            ? "bg-bg-900/80 backdrop-blur-md border-border-soft h-16"
+            : "bg-transparent h-20",
           !isVisible && "-translate-y-full"
         )}
         initial={{ y: -100 }}
@@ -45,7 +49,7 @@ export const Header = () => {
       >
         <div className="container mx-auto px-4 h-full flex items-center justify-between">
           {/* Logo */}
-          <button 
+          <button
             onClick={scrollToTop}
             className="text-2xl font-display font-bold text-text-primary hover:scale-105 transition-transform"
             aria-label="Home"
@@ -74,9 +78,18 @@ export const Header = () => {
               className="p-2 rounded-full text-text-secondary hover:text-accent-primary hover:bg-surface-200 transition-all"
               aria-label="Toggle theme"
             >
-              {theme === 'dark' ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
+              {theme === "dark" ? (
+                <Sun className="w-5 h-5" />
+              ) : (
+                <Moon className="w-5 h-5" />
+              )}
             </button>
-            <Button onClick={handleResumeClick} size="sm" variant="outline">
+            <Button
+              className="cursor-pointer"
+              onClick={handleResumeClick}
+              size="sm"
+              variant="outline"
+            >
               <FileText className="mr-2 w-4 h-4" />
               Resume
             </Button>
