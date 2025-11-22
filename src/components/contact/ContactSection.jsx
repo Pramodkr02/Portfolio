@@ -75,7 +75,7 @@ export const ContactSection = () => {
             initial={{ opacity: 0, x: 20 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            className="bg-surface-100 p-8 rounded-2xl border border-border-soft backdrop-blur-sm"
+            className="bg-surface-100 p-6 md:p-8 rounded-2xl border border-border-soft backdrop-blur-sm"
           >
             <ContactForm />
           </motion.div>

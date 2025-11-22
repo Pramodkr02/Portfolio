@@ -1,13 +1,25 @@
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { MessageSquare, X, Mail, Calendar, Video } from 'lucide-react';
 import { Button } from '@/components/ui/Button';
 
 export const ContactWidget = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const containerRef = useRef(null);
+
+  // Close widget when clicking outside
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (containerRef.current && !containerRef.current.contains(event.target)) {
+        setIsOpen(false);
+      }
+    };
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => document.removeEventListener('mousedown', handleClickOutside);
+  }, []);
 
   return (
-    <div className="fixed bottom-6 right-6 z-50">
+    <div ref={containerRef} className="fixed bottom-6 right-6 z-50">
       <AnimatePresence>
         {isOpen && (
           <motion.div
@@ -18,25 +30,25 @@ export const ContactWidget = () => {
           >
             <div className="p-4 space-y-3">
               <h4 className="font-bold text-text-primary text-sm">Quick Actions</h4>
-              <Button 
-                variant="ghost" 
-                size="sm" 
+              <Button
+                variant="ghost"
+                size="sm"
                 className="w-full justify-start"
                 href="mailto:contact@example.com"
               >
                 <Mail className="mr-2 w-4 h-4" /> Email Me
               </Button>
-              <Button 
-                variant="ghost" 
-                size="sm" 
+              <Button
+                variant="ghost"
+                size="sm"
                 className="w-full justify-start"
                 href="#"
               >
                 <Calendar className="mr-2 w-4 h-4" /> Schedule Call
               </Button>
-              <Button 
-                variant="ghost" 
-                size="sm" 
+              <Button
+                variant="ghost"
+                size="sm"
                 className="w-full justify-start"
                 href="#"
               >

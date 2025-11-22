@@ -16,8 +16,8 @@ export const EXPERIENCE_DATA = [
       "Enhanced data accuracy.",
     ],
     certificate: {
-      title: "Employee of the Month",
-      image: "/assets/cert-exp-1.jpg",
+      title: "HAL Summer Internship Certificate",
+      image: "/HAL-certificate.jpg",
     },
   },
   {
@@ -44,7 +44,7 @@ export const EXPERIENCE_DATA = [
     ],
     certificate: {
       title: "Best Creative Design 2022",
-      image: "/assets/cert-exp-2.jpg",
+      image: "/Bluestock-certificate.png",
     },
   },
   {
@@ -70,8 +70,8 @@ export const EXPERIENCE_DATA = [
       "Participated in various camps and activities.",
     ],
     certificate: {
-      title: "Best Creative Design 2022",
-      image: "/Profile.jpg",
+      title: "NCC ‘B’ and ‘C’ Certificates",
+      image: "/NCC-certificate.png",
     },
   },
 ];

@@ -1,33 +1,52 @@
 import React, { useState } from "react";
-import { useForm } from "react-hook-form";
+import { useForm, Controller } from "react-hook-form";
 import emailjs from "@emailjs/browser";
 import { Send, CheckCircle, AlertCircle, Loader2 } from "lucide-react";
 import { Button } from "@/components/ui/Button";
+import { CustomSelect } from "@/components/ui/CustomSelect";
 import { motion, AnimatePresence } from "framer-motion";
 
 export const ContactForm = () => {
   const {
     register,
     handleSubmit,
+    control,
     formState: { errors },
     reset,
   } = useForm();
   const [status, setStatus] = useState("idle"); // idle, sending, success, error
 
+  // Guard: ensure EmailJS env vars are present
+  const serviceId = import.meta.env.VITE_EMAILJS_SERVICE_ID;
+  const templateId = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
+  const publicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
+  if (!serviceId || !templateId || !publicKey) {
+    console.error("EmailJS configuration is missing. Please check .env file.");
+    setStatus("error");
+    return;
+  }
+
   const onSubmit = async (data) => {
     setStatus("sending");
+
     try {
-      // Replace with your actual EmailJS service/template/public key
-      // const result = await emailjs.send(
-      //   import.meta.env.VITE_EMAILJS_SERVICE_ID,
-      //   import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
-      //   data,
-      //   import.meta.env.VITE_EMAILJS_PUBLIC_KEY
-      // );
+      const templateParams = {
+        from_name: data.name,
+        from_email: data.email,
+        subject: data.subject,
+        message: data.message,
+        time: new Date().toLocaleString(),
+        to_name: "Pramod",
+      };
 
-      // Mock success for now
-      await new Promise((resolve) => setTimeout(resolve, 1500));
+      const result = await emailjs.send(
+        serviceId,
+        templateId,
+        templateParams,
+        publicKey
+      );
 
+      console.log("EmailJS Success:", result.text);
       setStatus("success");
       reset();
       setTimeout(() => setStatus("idle"), 5000);
@@ -36,6 +55,14 @@ export const ContactForm = () => {
       setStatus("error");
     }
   };
+
+  const subjectOptions = [
+    { value: "General Inquiry", label: "General Inquiry" },
+    { value: "Project Proposal", label: "Project Proposal" },
+    { value: "Freelance", label: "Freelance Opportunity" },
+    { value: "Job", label: "Job Opportunity" },
+    { value: "Other", label: "Other" },
+  ];
 
   return (
     <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
@@ -50,6 +77,7 @@ export const ContactForm = () => {
           <div className="relative">
             <input
               id="name"
+              name="name"
               {...register("name", { required: "Name is required" })}
               className={`w-full px-4 py-3 rounded-lg bg-surface-200 border ${
                 errors.name ? "border-red-500" : "border-border-soft"
@@ -82,6 +110,7 @@ export const ContactForm = () => {
           <div className="relative">
             <input
               id="email"
+              name="email"
               type="email"
               {...register("email", {
                 required: "Email is required",
@@ -112,25 +141,20 @@ export const ContactForm = () => {
         </div>
       </div>
 
-      <div className="space-y-2">
-        <label
-          htmlFor="subject"
-          className="text-sm font-medium text-text-secondary"
-        >
-          Subject
-        </label>
-        <select
-          id="subject"
-          {...register("subject")}
-          className="w-full px-4 py-3 rounded-lg bg-surface-200 border border-border-soft text-text-primary focus:outline-none focus:ring-2 focus:ring-accent-primary transition-all"
-        >
-          <option value="General Inquiry">General Inquiry</option>
-          <option value="Project Proposal">Project Proposal</option>
-          <option value="Freelance">Freelance Opportunity</option>
-          <option value="Job">Job Opportunity</option>
-          <option value="Other">Other</option>
-        </select>
-      </div>
+      <Controller
+        name="subject"
+        control={control}
+        rules={{ required: "Please select a subject" }}
+        render={({ field: { onChange, value } }) => (
+          <CustomSelect
+            options={subjectOptions}
+            value={value}
+            onChange={onChange}
+            label="Subject"
+            error={errors.subject}
+          />
+        )}
+      />
 
       <div className="space-y-2">
         <label
@@ -141,6 +165,7 @@ export const ContactForm = () => {
         </label>
         <textarea
           id="message"
+          name="message"
           rows={5}
           {...register("message", {
             required: "Message is required",

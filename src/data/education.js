@@ -40,7 +40,7 @@ export const EDUCATION_DATA = [
     certs: [
       {
         title: "Certificate of Completion",
-        image: "/assets/cert-bootcamp.jpg",
+        image: "/HSC-certificate.png",
       },
     ],
   },
@@ -70,8 +70,8 @@ export const EDUCATION_DATA = [
     ],
     certs: [
       {
-        title: "Certificate of Completion",
-        image: "/assets/cert-bootcamp.jpg",
+        title: "SSC-certificate",
+        image: "SSC-certificate.png",
       },
     ],
   },
