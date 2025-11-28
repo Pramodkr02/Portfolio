@@ -1,13 +1,6 @@
 import React, { Suspense, lazy } from "react";
 import { motion } from "framer-motion";
-import {
-  ArrowRight,
-  Download,
-  Github,
-  Linkedin,
-  Twitter,
-  CodeXml,
-} from "lucide-react";
+import { ArrowRight, Download, Github, Linkedin, Twitter } from "lucide-react";
 import { Button } from "@/components/ui/Button";
 import { HeroVisualCard } from "./HeroVisualCard";
 import { CanvasParticles } from "@/components/effects/CanvasParticles";
@@ -17,6 +10,12 @@ const ThreeHeroScene = lazy(() =>
     default: module.ThreeHeroScene,
   }))
 );
+
+const socialLinks = {
+  github: "https://github.com/Pramodkr02",
+  linkedin: "https://www.linkedin.com/in/pramodkr02/",
+  twitter: "https://x.com/Pramodkr02",
+};
 
 export const Hero = () => {
   const letterVariants = {
@@ -129,10 +128,10 @@ export const Hero = () => {
             transition={{ delay: 1, duration: 0.5 }}
             className="flex gap-6 pt-4"
           >
-            {[Github, Linkedin, CodeXml].map((Icon, i) => (
+            {[Github, Linkedin, Twitter].map((Icon, i) => (
               <a
                 key={i}
-                href="#"
+                href={Object.values(socialLinks)[i]}
                 className="text-text-tertiary hover:text-accent-primary hover:scale-110 transition-all duration-200"
                 aria-label="Social Link"
               >
